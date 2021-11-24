@@ -1,0 +1,25 @@
+.pagination {
+    margin-left: 8%;
+}
+
+.paginate {
+	list-style: none;
+    border: 1px solid white;
+    text-align: center;
+    padding-bottom: 3px;
+    padding-top: 0px;
+    padding-right: 5px;
+    padding-left: 5px;
+    margin: 7px;
+    border-radius: 5px;
+    display: inline;
+}
+
+.page_link {
+    text-decoration: none;
+    color: #fefefe;
+}
+
+.page_link:hover {
+    color: #ff4e00
+}
