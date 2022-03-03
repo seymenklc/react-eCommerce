@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
-
+// redux
 import { useDispatch } from "react-redux";
 import { removeFromFavorites } from "../../redux/actions/favoritesActions";
 
 export default function Favorite({ favorite }) {
     const dispatch = useDispatch();
 
-    const handleRemoveFromFavorites = () => dispatch(removeFromFavorites(favorite.id));
+    const handleRemove = () => dispatch(removeFromFavorites(favorite.id));
 
     return (
         <div id="container">
@@ -15,7 +15,7 @@ export default function Favorite({ favorite }) {
                 <p className="information">{favorite.description.substring(0, 100)}...</p>
                 <div className="control">
                     <button className="btn">
-                        <span className="buy" onClick={handleRemoveFromFavorites}>
+                        <span className="buy" onClick={handleRemove}>
                             Remove from favorites
                         </span>
                     </button>
@@ -34,6 +34,6 @@ export default function Favorite({ favorite }) {
                     </div>
                 </div>
             </Link>
-        </div >
+        </div>
     );
 }

@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 import { useToasts } from 'react-toast-notifications';
-
+// redux
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../redux/actions/cartActions';
-
+// styles
 import './Product.css';
 
 export default function Product({ product }) {
@@ -11,14 +11,11 @@ export default function Product({ product }) {
     const dispatch = useDispatch();
 
     const handleAddToCart = () => {
-        // adding a new property to product obj before dispatching
+        // adding productQty property to product
         product.productQty = 1;
         dispatch(addToCart(product));
         // notify user 
-        addToast('Added to cart!', {
-            appearance: 'info',
-            autoDismiss: true,
-        });
+        addToast('Added to cart!', { appearance: 'info', autoDismiss: true, });
     };
 
     return (
@@ -29,9 +26,7 @@ export default function Product({ product }) {
                 <div className="control">
                     <button className="btn" onClick={handleAddToCart}>
                         <span className="price">{product.price} $</span>
-                        <span className="buy">
-                            Add To Cart
-                        </span>
+                        <span className="buy">Add To Cart</span>
                     </button>
                 </div>
             </div>
@@ -48,6 +43,6 @@ export default function Product({ product }) {
                     </div>
                 </div>
             </Link>
-        </div >
+        </div>
     );
 }

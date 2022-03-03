@@ -1,5 +1,4 @@
 import { Link, NavLink } from "react-router-dom";
-
 // Styled Components
 import StyledNav from "./styled/StyledNav";
 import Wrapper from "./styled/Wrapper";

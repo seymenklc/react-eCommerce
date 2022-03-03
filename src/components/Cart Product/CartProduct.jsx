@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useToasts } from "react-toast-notifications";
-
+// redux
 import { useDispatch } from "react-redux";
 import { addToFavorites } from "../../redux/actions/favoritesActions";
 import { decrementAmount, incrementAmount } from "../../redux/actions/cartActions";
@@ -11,7 +11,8 @@ export default function CartProduct({ product, productQty, handleRemoveFromCart 
 
     const handleIncrement = () => dispatch(incrementAmount(product.id));
     const handleDecrement = () => dispatch(decrementAmount(product.id));
-    const handleAddToFavorites = () => {
+
+    const handleAdd = () => {
         dispatch(addToFavorites(product));
         addToast('Added to favorites!', {
             appearance: 'info',
@@ -49,7 +50,7 @@ export default function CartProduct({ product, productQty, handleRemoveFromCart 
                     <div className="remove" onClick={() => handleRemoveFromCart(product.id)}>
                         <u>Remove</u>
                     </div>
-                    <div className='save' onClick={handleAddToFavorites}>
+                    <div className='save' onClick={handleAdd}>
                         Add to favorites
                     </div>
                 </div>

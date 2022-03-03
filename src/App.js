@@ -1,6 +1,5 @@
-import { Route, Switch, Redirect } from 'react-router-dom';
 import { ToastProvider } from 'react-toast-notifications';
-
+import { Route, Switch, Redirect } from 'react-router-dom';
 // Components
 import Cart from './components/Cart/Cart';
 import Navbar from './components/Navbar';

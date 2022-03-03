@@ -7,22 +7,19 @@ const initialState = {
 const cartReducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.ADD_TO_CART: {
-            const { id } = action.payload;
-            const product = state.cart.find(product => product.id === id);
-            // checking if the item is already in the cart
+            // check if the item is already in the cart
+            const product = state.cart.find(product => product.id === action.payload.id);
             if (product) {
                 return {
                     ...state,
-                    cart: state.cart.map(product => product.id === id
+                    cart: state.cart.map(product => product.id === action.payload.id
                         ? { ...product, productQty: product.productQty + 1 }
                         : product
                     )
                 };
             }
-            return {
-                ...state,
-                cart: [...state.cart, action.payload],
-            };
+
+            return { ...state, cart: [...state.cart, action.payload] };
         }
         case actionTypes.REMOVE_FROM_CART:
             return {

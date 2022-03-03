@@ -1,11 +1,11 @@
 import { findTotalPrice } from "../../utils/findTotalPrice";
-
+// redux
 import { useDispatch, useSelector } from "react-redux";
 import { removeFromCart } from "../../redux/actions/cartActions";
-
+// components
 import CartProduct from "../Cart Product/CartProduct";
 import Wrapper from "../styled/Wrapper";
-
+// styles
 import './Cart.css';
 
 export default function Cart() {
@@ -14,8 +14,6 @@ export default function Cart() {
 
     const handleRemoveFromCart = (id) => dispatch(removeFromCart(id));
 
-    if (!cart?.length) return <Wrapper>There is no item in cart</Wrapper>;
-
     let total;
     if (cart?.length) {
         total = findTotalPrice(cart) || 0;
@@ -23,6 +21,7 @@ export default function Cart() {
 
     return cart && (
         <Wrapper>
+            {!cart?.length && <Wrapper>There is no item in cart</Wrapper>}
             {cart.map(product => (
                 <CartProduct
                     key={product.id}
@@ -35,7 +34,7 @@ export default function Cart() {
                 <div className="total">
                     <div>
                         <div className="Subtotal">Sub-Total</div>
-                        <div className="items">2 items</div>
+                        <div className="items">{cart?.length} items</div>
                     </div>
                     <div className="total-amount">${total}</div>
                 </div>

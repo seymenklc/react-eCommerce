@@ -7,17 +7,11 @@ const initialState = {
 const favoritesReducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.ADD_TO_FAVORITES:
+            // check if item already exists
             const favorite = state.favorites?.find(favorite => favorite.id === action.payload.id);
+            if (favorite) return { ...state, favorite: [...state.favorites] };
 
-            if (favorite) return {
-                ...state,
-                favorite: [...state.favorites]
-            };
-
-            return {
-                ...state,
-                favorites: [...state.favorites, action.payload]
-            };
+            return { ...state, favorites: [...state.favorites, action.payload] };
         case actionTypes.REMOVE_FROM_FAVORITES:
             return {
                 ...state,
